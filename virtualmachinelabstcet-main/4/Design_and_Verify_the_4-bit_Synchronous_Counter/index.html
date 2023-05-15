@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Design and Verify the 4- Bit Synchronous Counter using J-K flip flop</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="Design and Verify the 4- Bit Synchronous Counter using J-K flip flop">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/4/exp4.css">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../../static/js/graph.ob.js"></script>
+</head>
+
+<body style="background-color: rgb(236, 228, 180);">
+    <div id="root" style="margin: 0px auto;">
+        <div id="connection-table">
+            <B>Preliminary Step: </B>Make the proper connection by clicking the node as instructed below. If the wire is
+            misplaced, click the node number to deattach the nodes' wire. <br>
+            <table>
+                <!--<tr>
+                    <b>series field terminals not reversed</b>
+                </tr>-->
+                <tr>
+                    <td><B>From</B></td>
+                    <td>1</td>
+                    <td>2</td>
+                    
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    
+                    <!--<td><b>11</b></td>
+                    <td><b>14</b></td>-->
+                    <td>29</td>
+                    <td>33</td>
+                    <td>37</td>
+                    <td>40</td>
+                    <td>45</td>
+                    <td>46</td>
+                    <td>47</td>
+                    <td>48</td>
+                    <td>31</td>
+                    <td>56</td>
+                    <td>55</td>
+                    <td>54</td>
+                    <td>53</td>
+                </tr>
+                <tr>
+                    <td><B>To</B></td>
+                    <td>4,5,7,9,10,20,21,22,23,25,26,34</td>
+                    <td>3,8,19,24</td>
+                    
+                    <td>41</td>
+                    <td>31</td>
+                    <td>36,42</td>
+                    <!--<td><b>13</b></td>
+                    <td><b>15</b></td>-->
+                    
+                    <td>38,43</td>
+                    <td>39,27,30,44</td>
+                    <td>14,11</td>
+                    <td>18,6,35</td>
+                    <td>49</td>
+                    <td>50</td>
+                    <td>51</td>
+                    <td>52</td>
+                    <td>56</td>
+                    <td>55</td>
+                    <td>54</td>
+                    <td>53</td>
+                    <td>57</td>
+                </tr>
+            </table>
+        </div>
+        <div id="wrapper" style="position:relative; width:1360px; background-color: blanchedalmond;">
+            <div class="littledot" id="ld1"></br><a href="#" class="detach" rel="ld1">1</a>
+            </div>
+            <div class="littledot" id="ld2"></br><a href="#" class="detach" rel="ld2">2</a>
+            </div>
+            <div class="littledot" id="ld3"></br><a href="#" class="detach" rel="ld3">3</a>
+            </div>
+            <div class="littledot" id="ld4"></br><a href="#" class="detach" rel="ld4">4</a>
+            </div>
+            <div class="littledot" id="ld5"></br><a href="#" class="detach" rel="ld5">5</a>
+            </div>
+            <div class="littledot" id="ld6"></br><a href="#" class="detach" rel="ld6">6</a>
+            </div>
+            <div class="littledot" id="ld7"></br><a href="#" class="detach" rel="ld7">7</a>
+            </div>
+            <div class="littledot" id="ld8"></br><a href="#" class="detach" rel="ld8">8</a>
+            </div>
+            <div class="littledot" id="ld9"></br><a href="#" class="detach" rel="ld9">9</a>
+            </div>
+            <div class="littledot" id="ld10"></br><a href="#" class="detach" rel="ld10">10</a>
+            </div>
+            <div class="littledot" id="ld11"></br><a href="#" class="detach" rel="ld11">11</a>
+            </div>
+            <div class="littledot" id="ld12"></br><a href="#" class="detach" rel="ld12">12</a>
+            </div>
+            <div class="littledot" id="ld13"></br><a href="#" class="detach" rel="ld13">13</a>
+            </div>
+            <div class="littledot" id="ld14"></br><a href="#" class="detach" rel="ld14">14</a>
+            </div>
+            <div class="littledot" id="ld15"></br><a href="#" class="detach" rel="ld15">15</a>
+            </div>
+            <div class="littledot" id="ld16"></br><a href="#" class="detach" rel="ld16">16</a>
+            </div>
+            <div class="littledot" id="ld17"></br><a href="#" class="detach" rel="ld17">17</a>
+            </div>
+            <div class="littledot" id="ld18"></br><a href="#" class="detach" rel="ld18">18</a>
+            </div>
+            <div class="littledot" id="ld19"></br><a href="#" class="detach" rel="ld19">19</a>
+            </div>
+            <div class="littledot" id="ld20"></br><a href="#" class="detach" rel="ld20">20 </a>
+            </div>
+            <div class="littledot" id="ld21"></br><a href="#" class="detach" rel="ld21">21</a>
+            </div>
+            <div class="littledot" id="ld22"></br><a href="#" class="detach" rel="ld22">22</a>
+            </div>
+            <div class="littledot" id="ld23"></br><a href="#" class="detach" rel="ld23">23</a>
+            </div>
+            <div class="littledot" id="ld24"></br><a href="#" class="detach" rel="ld24">24</a>
+            </div>
+            <div class="littledot" id="ld25"></br><a href="#" class="detach" rel="ld25">25</a>
+            </div>
+            <div class="littledot" id="ld26"></br><a href="#" class="detach" rel="ld26">26</a>
+            </div>
+            <div class="littledot" id="ld27"></br><a href="#" class="detach" rel="ld27">27</a>
+            </div>
+            <div class="littledot" id="ld28"></br><a href="#" class="detach" rel="ld28">28</a>
+            </div>
+            <div class="littledot" id="ld29"></br><a href="#" class="detach" rel="ld29">29</a>
+            </div>
+            <div class="littledot" id="ld30"></br><a href="#" class="detach" rel="ld30">30</a>
+            </div>
+            <div class="littledot" id="ld31"></br><a href="#" class="detach" rel="ld31">31</a>
+            </div>
+            <div class="littledot" id="ld32"></br><a href="#" class="detach" rel="ld32">32</a>
+            </div>
+            <div class="littledot" id="ld33"></br><a href="#" class="detach" rel="ld33">33</a>
+            </div>
+            <div class="littledot" id="ld34"></br><a href="#" class="detach" rel="ld34">34</a>
+            </div>
+            <div class="littledot" id="ld35"></br><a href="#" class="detach" rel="ld35">35</a>
+            </div>
+            <div class="littledot" id="ld36"></br><a href="#" class="detach" rel="ld36">36</a>
+            </div>
+            <div class="littledot" id="ld37"></br><a href="#" class="detach" rel="ld37">37</a>
+            </div>
+            <div class="littledot" id="ld38"></br><a href="#" class="detach" rel="ld38">38</a>
+            </div>
+            <div class="littledot" id="ld39"></br><a href="#" class="detach" rel="ld39">39</a>
+            </div>
+            <div class="littledot" id="ld40"></br><a href="#" class="detach" rel="ld40">40</a>
+            </div>
+            <div class="littledot" id="ld41"></br><a href="#" class="detach" rel="ld41">41</a>
+            </div>
+            <div class="littledot" id="ld42"></br><a href="#" class="detach" rel="ld42">42</a>
+            </div>
+            <div class="littledot" id="ld43"></br><a href="#" class="detach" rel="ld43">43</a>
+            </div>
+            <div class="littledot" id="ld44"></br><a href="#" class="detach" rel="ld44">44</a>
+            </div>
+            <div class="littledot" id="ld45"></br><a href="#" class="detach" rel="ld45">45</a>
+            </div>
+            <div class="littledot" id="ld46"></br><a href="#" class="detach" rel="ld46">46</a>
+            </div>
+            <div class="littledot" id="ld47"></br><a href="#" class="detach" rel="ld47">47</a>
+            </div>
+            <div class="littledot" id="ld48"></br><a href="#" class="detach" rel="ld48">48</a>
+            </div>
+            <div class="littledot" id="ld49"></br><a href="#" class="detach" rel="ld49">49</a>
+            </div>
+            <div class="littledot" id="ld50"></br><a href="#" class="detach" rel="ld50">50</a>
+            </div>
+            <div class="littledot" id="ld51"></br><a href="#" class="detach" rel="ld51">51</a>
+            </div>
+            <div class="littledot" id="ld52"></br><a href="#" class="detach" rel="ld52">52</a>
+            </div>
+            <div class="littledot" id="ld53"></br><a href="#" class="detach" rel="ld53">53</a>
+            </div>
+            <div class="littledot" id="ld54"></br><a href="#" class="detach" rel="ld54">54</a>
+            </div>
+            <div class="littledot" id="ld55"></br><a href="#" class="detach" rel="ld55">55</a>
+            </div>
+            <div class="littledot" id="ld56"></br><a href="#" class="detach" rel="ld56">56</a>
+            </div>
+            <div class="littledot" id="ld57"></br><a href="#" class="detach" rel="ld57">57</a>
+            </div>
+            <div class="littledot" id="Q3"></br><a href="#" class="detach" rel="Q3" style="color: rgb(15, 12, 12);"><b>Q<sub>3</sub></b></a>
+            </div>
+            <div class="littledot" id="Q2"></br><a href="#" class="detach" rel="Q2" style="color: black;"><b>Q<sub>2</sub></b></a>
+            </div>
+            <div class="littledot" id="Q1"></br><a href="#" class="detach" rel="Q1" style="color: black;"><b>Q<sub>1</sub></b></a>
+            </div>
+            <div class="littledot" id="Q0"></br><a href="#" class="detach" rel="Q0" style="color: black;"><b>Q<sub>0</sub></b></a>
+            </div>
+            <div class="littledot" id="q3"></br><a href="#" class="detach" rel="q3" style="color: black;"><b>Q<sub>3</sub></b></a>
+            </div>
+            <div class="littledot" id="q2"></br><a href="#" class="detach" rel="q2" style="color: black;"><b>Q<sub>2</sub></b></a>
+            </div>
+            <div class="littledot" id="q1"></br><a href="#" class="detach" rel="q1" style="color: black;"><b>Q<sub>1</sub></b></a>
+            </div>
+            <div class="littledot" id="q0"></br><a href="#" class="detach" rel="q0" style="color: black;"><b>Q<sub>0</sub></b></a>
+            </div>
+            
+
+
+
+            <div>
+                <div class="column">
+
+                    <div style="position: absolute; display: flex; left: 1em; z-index: 1000; padding: 10px;">
+                        <div>
+                            <button id="check-button"
+                                style="background-color:#27D447; border:none; margin: 5px; padding: 5px; border-radius:5px">Check</button>
+                        </div>
+                        <div>
+                            <button class="addButtonClass" id="addToTable" disabled="true" style="
+                            border:none; margin: 5px; padding: 5px; border-radius:5px">Add
+                                to
+                                table</button>
+                        </div>
+                        <div>
+                            <button id="graph" disabled="true" onclick="drawgraph()" ;
+                                style="background-color:#27D447; border:none; margin: 5px; padding: 5px; border-radius:5px">Timing Diagram
+                            </button>
+                        </div>
+
+                        <div>
+                            <button id="print" onclick="window.print();"
+                                style="background-color:#27D447; border:none; margin: 5px; padding: 5px; border-radius:5px">Print
+                            </button>
+                        </div>
+
+                        <div>
+                            <button id="reset" type="reset" onclick="window.location.reload();"
+                                style="background-color:#f82d12; border:none; margin: 5px; padding: 5px; border-radius:5px">Reset</button>
+                        </div>
+                    </div>
+                    <!--power-->
+                    <div style="position: absolute; left: 2em; top: 7.5em; z-index: 100;">
+                        <div style="top: -1em;">
+                            <img id="myimage1" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                            <img id="myimage2" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                            <img id="myimage3" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                        </div>
+                        <div style="top:-1em;">
+                            <img id="myimage" class="mcbSwitch" src="../../static/images/mcboff.png" alt="MCB Switch"
+                                onclick="mcbonoff();" width="78" height="120">
+                        </div>
+                        <div style="position: absolute; top: 15.5em; left: 1em; width: 64px; height: 44px; background-color: #27D447; border-radius: 20px; text-align: center; display: inline-block; cursor: pointer;">
+                            <button id="c" style="cursor: pointer; width:64px;height:44px;border-radius:20px;background-color: #27D447; border: none;text-align: center;color: antiquewhite;">0</button>
+                        </div>
+                    </div>
+
+                    <!--rectifier prev-->
+                    <div style="position: absolute; left: 10em; top: 9.5em;">
+                        <!--line1-->
+                        <div id="line1"
+                            style="position: absolute; top: 8.5em; left: 3em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <!--line2-->
+                        <div id="line2"
+                            style="position: absolute; top: 10.5em; left: 3em; width: 112px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <!--line3-->
+                        <div id="line3"
+                            style="position: absolute; top: 16.5em; left: 3em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <!--line4-->
+                        <div id="line4"
+                            style="position: absolute; top: 9.5em; left: 9em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <!--line5-->
+                        <div id="line5"
+                            style="position: absolute; top: 17.5em; left: 9em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <!--line6-->
+                        <div id="line6"
+                            style="position: absolute; top: 15.5em; left: 9em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>
+                        <div
+                            style="background-color: rgb(240, 242, 241); background-size: auto; padding: 2px; position: inherit; top: -4.6em; left: -1.4em;">
+                            <p style="text-align: center;">Negatively Triggered Clock</p>
+                            <img src="../../static/images/clk.png" alt="" style="height:5.5em;">
+                            
+                        </div>
+                    </div>
+
+                    <!--Rectifier-->
+                    <div class="rectifier">
+                        <div class="rectifier-diode">
+                            <img src="../../static/images/gate 1.png" alt="">
+                        </div>
+                        <div></div>
+                        <div class="rectifier-diode">
+                            <img src="../../static/images/gate 2.png" alt="">
+                        </div>
+                    </div>
+
+                    <!--DC generator-->
+                    <div class="dc-generator">
+                        <h5 style="background-color: #dcd9d9; padding: 10px; margin: 0; color: rgb(34, 34, 35); ">
+                            IC 7476
+                            <br>
+                            Dual J/K M/S Flip-Flop, V<sub>in</sub>=5.5V<!--, I<sub>f</sub>=0.55A, 1500 RPM-->
+                        </h5>
+
+                        <img src="../../static/images/2.png" alt="" style="-webkit-transform:scaleX(1);
+                        -moz-transform: scaleX(1);
+                        -ms-transform: scaleX(1);
+                        -o-transform: scaleX(1);
+                        transform: scaleX(1); ">
+                        <div style="display: flex; position: relative; top: 0.5em;">
+                            <div class="rang" style="position: relative; top: -1.2em;">
+                                <!--<div class="rang-title2">
+                                    <input class="rang-number2" id="show1" type="text" value="0" disabled="disabled" />
+                                </div>-->
+                            </div>
+                            <!--<div style="margin-left: 1em;">
+                                <input class="rang-slider" disabled="true" id="range1" type="range" min="0" max="5"
+                                    value="0" />
+                            </div>-->
+                        </div>
+
+                    </div>
+                    <!--rotor inner and outer-->
+                    <div style="position: absolute; width: 120px; height: 120px; left: 43em; top: 1em;">
+                        <div style="position: relative;">
+                            <!--<img src="../../static/images/Rotorouter.png" class="rotate1"
+                                style="position: relative; max-width: 100%; max-height: 100%;">
+                            <img src="../../static/images/Rotorinner.png" class="rotate" id="cirmover"
+                                style="position: relative; max-width: 52%; max-height: 52%; top: -5.9em; left: 1.8em;">-->
+                        </div>
+                        <div class="rang" style="position: relative; top: -5em; left: -2.5em;">
+                            <!--<div class="rang-title">
+                                <input class="rang-numberL" id="show01" type="text" value="0" disabled="disabled" />
+                            </div>-->
+                        </div>
+                    </div>
+
+
+                    <!--Linker-->
+                    <!--<div
+                        style="background-color: #000000; position: absolute; left: 41em; top: 10.6em; width: 175px; height: 10px; z-index: 100; border-radius: 5px;">
+                    </div>-->
+
+                    <!--DC motor-->
+                    <div class="dc-motor">
+                        <h5 style="background-color: #e5e2e2; padding: 10px; margin: 0; color: rgb(53, 53, 53);">
+                            IC 7476
+                            <br>
+                            Dual J/K M/S Flip-Flop, V<sub>in</sub>=5.5V
+                        </h5>
+                        <img src="../../static/images/2.png" alt="" style=" -webkit-transform:scaleX(1);
+                        -moz-transform: scaleX(1);
+                        -ms-transform: scaleX(1);
+                        -o-transform: scaleX(1);
+                        transform: scaleX(1);">
+                    </div>
+
+
+                    <!--AMMETER-->
+                    <div style="position: absolute;left: 68em; top: 4em; width: 200px; height: 300px;display: flex;flex-direction: row;">
+                        <div id="1"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                        <div id="2"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                        <div id="3"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                        <div id="4"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                        <!--<div id="line1"
+                            style="position: absolute; top: 8.5em; left: 3em; width: 64px; height: 5px; background-color: #b60c0c;">
+                        </div>-->
+                        <div class="meter2" style="position: relative; top: 0em;">
+                            <!--<div class="rang" style="z-index: 100; position: relative; top: -13em; left: -1em;">
+                                <div class="rang-title">
+                                    <input class="rang-numberL" id="show02" type="text" value="0" disabled="disabled" />
+                                </div>
+                            </div>-->
+                            <!--<div>
+                                <svg style="position: relative; top: -25em; left: -3.5em; width:220px;">
+                                    <polygon class="meter-clock" id="meter1" points="133,140 137,90 145,150"></polygon>
+                                    <circle class="meter-circle" r="8" cx="137" cy="145"></circle>
+                                </svg>
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <!--VOLTMETER-->
+                    <div style="position: absolute;left: 69em;top: 14em; width: 200px; height: 100px; display: flex;flex-direction: row;">
+                        <div><img id="a1" src="../../static/images/off.png" alt="Ammeter" width="100%"></div>
+                        <div><img id="a2" src="../../static/images/off.png" alt="Ammeter" width="100%"></div>
+                        <div><img id="a3" src="../../static/images/off.png" alt="Ammeter" width="100%"></div>
+                        <div><img id="a4" src="../../static/images/off.png" alt="Ammeter" width="100%"></div>
+                        <div class="meter2" style="position: relative; top: 4.65em; left: -0.4em;">
+                            <!--<div class="rang" style="z-index: 100; position: relative; top: -14em; left: -0.5em;">
+                                <div class="rang-title">
+                                    <input class="rang-numberL" id="show03" type="text" value="0" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div>
+                                <svg style="position: relative; top: -25.5em; left: -2.9em; width: 220px">
+                                    <polygon class="meter-clock" id="meter2" points="133,140 137,90 145,150"></polygon>
+                                    <circle class="meter-circle" r="8" cx="137" cy="145"></circle>
+                                </svg>
+                            </div>-->
+                        </div>
+                    </div>
+                    <!--Rheostat-->
+                    <div style="position: absolute;left: 75em;top: 21.8em; width: 30px; height: 40px;">
+                        <!--<h5 style="margin: 0; padding: 0; position: relative; left: 3em;">Resistive Load Box</h5>-->
+                        <img src="../../static/images/grd.png" alt="Ammeter" width="100%">
+                        <!--<div style="display: flex; flex-direction: row; justify-content: space-around;">
+                            <div class="rang" style="position: relative; left: 1em; top: -1em;">
+                                <div class="rang-title2">
+                                    <input class="rang-number2" id="show2" type="text" value="0" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div>
+                                <input class="rang-slider" disabled="true" id="range2" type="range" min="0" max="5"
+                                    value="0" />
+                            </div>
+                        </div>-->
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <!--<div class="column50" style="height: 200px;">
+                    <h3 style="margin: 0;">Truth Table</h3>
+                    <div style="position: relative; display: flex; flex-direction: row;">
+                        <table id="table1" class="table" style="flex: 3;">
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Clock</th>
+                                <th>Q3</th>
+                                <th>Q2</th>
+                                <th>Q1</th>
+                                <th>Q0</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>-->
+                <!--<div class="column50" style="height: 200px;">
+                    <h3 style="margin: 0;">With series field terminals reversed</h3>
+                    <div style="position: relative; display: flex; flex-direction: row;">
+                        <table id="table2" class="table" style="flex: 3;">
+                            <tr>
+                                <th>Sl. No.</th>
+                                <th>Speed (RPM)</th>
+                                <th>Load Current (A)</th>
+                                <th>Terminal Voltage (V)</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="column50" style="border-top: 10;text-align: center; ">
+                    <b>Truth Table</b>
+                    <!--<span style="margin: 0;"></span>-->
+                    <!--<div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv1" style="width:500px;height:350px;"></div>
+                    </div>-->
+                    <div style="position: relative; display: flex; flex-direction: row;">
+                        <table id="table1" class="table" style="flex: 3;">
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Clock</th>
+                                <th>Q3</th>
+                                <th>Q2</th>
+                                <th>Q1</th>
+                                <th>Q0</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="column50" style="border-top: 10;text-align: center; ">
+                    <b>Timing Diagram</b>
+                    <span style="margin: 0;"></span>
+                    <div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv1" style="width:500px;height:120px;"></div>
+                    </div>
+                    <div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv2" style="width:500px;height:120px;"></div>
+                    </div>
+                    <div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv3" style="width:500px;height:120px;"></div>
+                    </div>
+                    <div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv4" style="width:500px;height:120px;"></div>
+                    </div>
+                    <div class="container" style="position:relative; left: 4em;">
+                        <div class="box" id="myDiv5" style="width:500px;height:120px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <div><u><B>Instructions</B></u><br>
+                <span>
+                    <B>Step 1: </B>Press Switch to supply 5V to the Circuit.<br>
+                    <table>
+                        <!--<tr>
+                            <b>series field terminals not reversed</b>
+                        </tr>-->
+                        <!--<tr>
+                            <td><B>From</B></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td><b>11</b></td>
+                            <td><b>14</b></td>
+                            <td>16</td>
+                            <td>20</td>
+                            <td>19</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td><B>To</B></td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td><b>13</b></td>
+                            <td><b>15</b></td>
+                            <td>19</td>
+                            <td>12</td>
+                            <td>17</td>
+                            <td>18</td>
+                        </tr>-->
+                    </table>
+                    <!--<table>
+                        <tr>
+                            <b>series field terminals reversed</b>
+                        </tr>
+                        <tr>
+                            <td><B>From</B></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td><b>11</b></td>
+                            <td><b>13</b></td>
+                            <td>16</td>
+                            <td>20</td>
+                            <td>19</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td><B>To</B></td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td><b>14</b></td>
+                            <td><b>15</b></td>
+                            <td>19</td>
+                            <td>12</td>
+                            <td>17</td>
+                            <td>18</td>
+                        </tr>
+                    </table>-->
+                    <B>Step 2: </B>Press Counter button to start the counter.
+                    <li>if connection is correct, an alert appers. Click ok. Now, go to step 4.</li>
+                    <li>if connection is wrong, an alert appers. Click ok. Now, go to step 3.</li>
+                    <B>Step 3: </B>Check the connection, if incorrect, click on node <b>number</b> to remove any
+                    particular connection(s) or click on reset button and start from step 1.<br>
+                    <B>Step 4: </B>Different Combination of LEDs lit up for different combiation of Input.The data is simultaneously added to the truth table.<br>
+                    <B>Step 5: </B>Repeat steps 2 to 4 for another 15 sets of data.<br>
+                    <B>Step 6: </B>Click "Generate Waveform" button to generate the timing diagram.<br>
+                    <B>Step 7: </B>Click "Print" to get the print out of the truth table and the timing diagram.
+
+                </span>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="footer noPrint"
+            style="text-align: center; position: relative; top: 2em; background-color:rgb(236, 192, 126);">
+            <div>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12.5px;">Inspired from <a
+                        href="https://de-iitr.vlabs.ac.in/" target="_blank">de-iitr.vlabs.ac.in</a></p>
+            </div>
+        </div>
+
+    </div>
+    <script src="../../static/js/jsplumb1.js"></script>
+    <script src="../../static/js/4/exp4.js"></script>
+
+</body>
+
+</html>

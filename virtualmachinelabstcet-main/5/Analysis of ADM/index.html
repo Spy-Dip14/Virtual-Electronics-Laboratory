@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adaptive Delta Modulation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      canvas {
+        border: 1px solid black;
+        margin: 20px auto;
+      }
+      label {
+        display: inline-block;
+        margin: 10px;
+        font-weight: bold;
+      }
+      input[type="range"] {
+        width: 300px;
+      }
+      button {
+        margin: 10px;
+        font-size: 1.2em;
+        padding: 10px 20px;
+        border: none;
+        background-color: #008CBA;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #005F6B;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="color:#52593b">Adaptive Delta Modulation</h1>
+    <canvas id="canvas" width="800" height="400"></canvas><br><br>
+    <label for="amplitudeRange">Input Amplitude:</label>
+    <input type="range" id="amplitudeRange" min="0" max="2" step="0.1" value="1">
+    <br>
+    <label for="frequencyRange">Input Frequency:</label>
+    <input type="range" id="frequencyRange" min="0" max="10" step="0.1" value="1">
+    <br>
+    <label for="stepSizeRange">Step Size:</label>
+    <input type="range" id="stepSizeRange" min="0" max="1" step="0.01" value="0.1">
+    <br>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      let animationId;
+      let time = 0;
+      let signal = [];
+      let output = [];
+      const amplitudeRange = document.getElementById('amplitudeRange');
+      const frequencyRange = document.getElementById('frequencyRange');
+      const stepSizeRange = document.getElementById('stepSizeRange');
+      const startButton = document.getElementById('startButton');
+      const stopButton = document.getElementById('stopButton');
+
+      function generateSignal() {
+        const amplitude = amplitudeRange.value;
+        const frequency = frequencyRange.value;
+        const samples = 800;
+        signal = [];
+        for (let i = 0; i < samples; i++) {
+          const x = (i / samples) * 2 * Math.PI * frequency;
+          signal.push(amplitude * Math.sin(x));
+        }
+      }
+
+      function startAnimation() {
+        generateSignal();
+        output = [0];
+        time = 0;
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function stopAnimation() {
+        cancelAnimationFrame(animationId);
+      }
+
+      function animate() {
+        const stepSize = stepSizeRange.value / 10;
+        const prediction = output[output.length - 1] + stepSize * delta(signal[time], output[output.length - 1]);
+        output.push(prediction);
+        time++;
+        if (time >= signal.length) {
+          stopAnimation();
+          return;
+        }
+        draw();
+        animationId = requestAnimationFrame(animate);
+      }
+
+      function delta(x, y) {
+        if (x >= y) {
+         
+	    return 1;
+	} else {
+	    return -1;
+	}
+      }
+function draw() {
+  const margin = 50;
+  const width = canvas.width - margin * 2;
+  const height = canvas.height - margin * 2;
+  const xScale = width / signal.length;
+  const yScale = height / 4;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'black';
+  ctx.fillRect(margin, margin + height / 2, width, 1);
+  ctx.fillRect(margin, margin, 1, height);
+  ctx.fillText('Input Signal', margin + width / 2, margin / 2);
+  ctx.fillText('Output Signal', margin + width / 2, margin + height + margin / 2);
+  ctx.beginPath();
+  ctx.moveTo(margin, margin + height / 2 - signal[0] * yScale);
+  for (let i = 1; i < signal.length; i++) {
+    const x = margin + i * xScale;
+    const y = margin + height / 2 - signal[i] * yScale;
+    ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = 'blue';
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(margin, margin + height / 2 - output[0] * yScale);
+  for (let i = 1; i < output.length; i++) {
+    const x = margin + i * xScale;
+    const y = margin + height / 2 - output[i] * yScale;
+    ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = 'red';
+  ctx.stroke();
+}
+
+startButton.addEventListener('click', startAnimation);
+stopButton.addEventListener('click', stopAnimation);
+</script>
+</body>
+</html>

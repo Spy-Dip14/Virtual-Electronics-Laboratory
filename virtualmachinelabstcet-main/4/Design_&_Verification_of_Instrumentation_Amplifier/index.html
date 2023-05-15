@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Design of Instrumentation Amplifier using Opamp 741</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description"
+        content="Design of Instrumentation Amplifier using IC 741">
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4250097576674323"
+        crossorigin="anonymous"></script> -->
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/4/exp2.css">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../../static/js/graph.ob.js"></script>
+</head>
+
+<body style="background-color: rgb(236, 228, 180);">
+    <div id="root" style="margin: 0px auto;">
+        <div id="connection-table">
+            <B>Preliminary Step: </B>Make the proper connection by clicking the node as instructed below. If the wire is
+            misplaced, click the node number to deattach the nodes' wire. <br>
+            <table>
+                <tr>
+                    <td><B>From</B></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>4,33,24</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>9,14,27</td>
+                    <td>10,15,28</td>
+                    <td>8</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>22</td>
+                    <td>20</td>
+                    <td>29</td>
+                    <td>31</td>
+
+                </tr>
+                <tr>
+                    <td><B>To</B></td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>36</td>
+                    <td>12</td>
+                    <td>7</td>
+                    <td>34</td>
+                    <td>35</td>
+                    <td>11</td>
+                    <td>17</td>
+                    <td>16</td>
+                    <td>21</td>
+                    <td>19,26</td>
+                    <td>23,25</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>32</td>
+                </tr>
+            </table>
+        </div>
+        <div id="wrapper" style="position:relative; width:1310px; background-color: blanchedalmond;">
+            <div class="littledot" id="ld1"></br><a href="#" class="cmdLink detach" rel="ld1">1</a>
+            </div>
+            <div class="littledot" id="ld2"></br><a href="#" class="cmdLink detach" rel="ld2">2</a>
+            </div>
+            <div class="littledot" id="ld3"></br><a href="#" class="cmdLink detach" rel="ld3">3</a>
+            </div>
+            <div class="littledot" id="ld4"></br><a href="#" class="cmdLink detach" rel="ld4">4</a>
+            </div>
+            <div class="littledot" id="ld5"></br><a href="#" class="cmdLink detach" rel="ld5">5</a>
+            </div>
+            <div class="littledot" id="ld6"></br><a href="#" class="cmdLink detach" rel="ld6">6</a>
+            </div>
+            <div class="littledot" id="ld7"></br><a href="#" class="cmdLink detach" rel="ld7">7</a>
+            </div>
+            <div class="littledot" id="ld8"></br><a href="#" class="cmdLink detach" rel="ld8">8</a>
+            </div>
+            <div class="littledot" id="ld9"></br><a href="#" class="cmdLink detach" rel="ld9">9</a>
+            </div>
+            <div class="littledot" id="ld10"></br><a href="#" class="cmdLink detach" rel="ld10">10</a>
+            </div>
+            <div class="littledot" id="ld11"></br><a href="#" class="cmdLink detach" rel="ld11">11</a>
+            </div>
+            <div class="littledot" id="ld12"></br><a href="#" class="cmdLink detach" rel="ld12">12</a>
+            </div>
+            <div class="littledot" id="ld13"></br><a href="#" class="cmdLink detach" rel="ld13">13</a>
+            </div>
+            <div class="littledot" id="ld14"></br><a href="#" class="cmdLink detach" rel="ld14">14</a>
+            </div>
+            <div class="littledot" id="ld15"></br><a href="#" class="cmdLink detach" rel="ld15">15</a>
+            </div>
+            <div class="littledot" id="ld16"></br><a href="#" class="cmdLink detach" rel="ld16">16</a>
+            </div>
+            <div class="littledot" id="ld17"></br><a href="#" class="cmdLink detach" rel="ld17">17</a>
+            </div>
+            <div class="littledot" id="ld18"></br><a href="#" class="cmdLink detach" rel="ld18">18</a>
+            </div>
+            <div class="littledot" id="ld19"></br><a href="#" class="cmdLink detach" rel="ld19">19</a>
+            </div>
+            <div class="littledot" id="ld20"></br><a href="#" class="cmdLink detach" rel="ld20">20</a>
+            </div>
+            <div class="littledot" id="ld21"></br><a href="#" class="cmdLink detach" rel="ld21">21</a>
+            </div>
+            <div class="littledot" id="ld22"></br><a href="#" class="cmdLink detach" rel="ld22">22</a>
+            </div>
+            <div class="littledot" id="ld23"></br><a href="#" class="cmdLink detach" rel="ld23">23</a>
+            </div>
+            <div class="littledot" id="ld24"></br><a href="#" class="cmdLink detach" rel="ld24">24</a>
+            </div>
+            <div class="littledot" id="ld25"></br><a href="#" class="cmdLink detach" rel="ld25">25</a>
+            </div>
+            <div class="littledot" id="ld26"></br><a href="#" class="cmdLink detach" rel="ld26">26</a>
+            </div>
+            <div class="littledot" id="ld27"></br><a href="#" class="cmdLink detach" rel="ld27">27</a>
+            </div>
+            <div class="littledot" id="ld28"></br><a href="#" class="cmdLink detach" rel="ld28">28</a>
+            </div>
+            <div class="littledot" id="ld29"></br><a href="#" class="cmdLink detach" rel="ld29">29</a>
+            </div>
+            <div class="littledot" id="ld30"></br><a href="#" class="cmdLink detach" rel="ld30">30</a>
+            </div>
+            <div class="littledot" id="ld31"></br><a href="#" class="cmdLink detach" rel="ld31">31</a>
+            </div>
+            <div class="littledot" id="ld32"></br><a href="#" class="cmdLink detach" rel="ld32">32</a>
+            </div>
+            <div class="littledot" id="ld33"></br><a href="#" class="cmdLink detach" rel="ld33">33</a>
+            </div>
+            <div class="littledot" id="ld34"></br><a href="#" class="cmdLink detach" rel="ld34">34</a>
+            </div>
+            <div class="littledot" id="ld35"></br><a href="#" class="cmdLink detach" rel="ld35">35</a>
+            </div>
+            <div class="littledot" id="ld36"></br><a href="#" class="cmdLink detach" rel="ld36">36</a>
+            </div>
+
+
+
+
+            <div class="row">
+
+                <div class="column10">
+                    <p style="position: absolute;left: 1.5em; top:1.5em;"><b>5V, <br> DC Supply</b></p>
+                    <div style="position:absolute;top:6em;left:3.2em;">
+                        <!--<img id="myimage1" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                            width="25" height="25">-->
+                        <img id="myimage1" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                            width="25" height="25">
+                        <!--<img id="myimage3" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                            width="25" height="25">-->
+                    </div>
+                    <div style="position:absolute;top:8em;left:1.5em;">
+                        <img id="myimage" class="mcbSwitch" src="../../static/images/mcboff.png" alt="MCB Switch"
+                            onclick="mcbonoff()" width="78" height="120">
+                    </div>
+                </div>
+                <div class="column24">
+                    <div class="x4" style="position: absolute;left: 6em; top: 8.5em;">
+                        <img style="padding-left: 60px" src="../../static/images/wheatstone bridge.jpg" alt="bridge"
+                            width="50%">
+
+                        <!-- <div class="rang" style="position: absolute;top: 5.2em;left: 3.9em;">
+                            <div class="rang-title4">
+                                <input class="rang-number4" id="show02" type="text" value="0" disabled="disabled" />
+                            </div>
+                        </div>
+
+                        <div class="rang" style="position: absolute;top: 5.2em;left: 10.9em;">
+                            <div class="rang-title4">
+                                <input class="rang-number4" id="show03" type="text" value="0" disabled="disabled" />
+                            </div>
+                        </div> -->
+
+                        <div style="position:relative; top: -19em; left: 5.5em;">
+                            <div style="position: relative; top: -0.5em;"><b>Move the slider to change <br>
+                                the resistance of 1K POT[ΔR]➤</b></div>
+
+                            <div class="rang" style="position: relative; left: -1em; top: -1em;">
+                                <div class="rang-title2">
+                                    <input class="rang-number" id="show04" type="text" value="0" disabled="disabled" />
+                                </div>
+                               
+                            </div>
+                            <div class="slidecontainer" style="position:relative; top: -2.4em; left: 1.5em;">
+                                <input class="rang-slider" disabled="true" id="range2" type="range" min="252" max="1000"
+                                    value="0" />
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+
+                <div class="column42" id="movers-row">
+                    <!-- <img style="position: absolute; top: 13.5em; left: 42em;" class="amMeter"
+                        src="../../static/images/Ammeter.png" alt="Ammeter" width="170" height="170"> -->
+                    <!-- <div class="meter1" style="position: absolute;top: 11em;left: 33em;">
+                        <div class="rang" style="position: absolute;top: 0em;left: 38em;">
+                            <div class="rang-title">
+                                <input class="rang-number" id="show1" type="text" value="0" disabled="disabled" />
+                            </div>
+                            <br>Ammeter
+                        </div>
+                        <div style="position: absolute;top:-9.5em;left: 50.8em;">
+                            <svg class="meter">
+                                <polygon class="meter-clock" id="meter1" points="129,145 137,90 145,145"></polygon>
+                                <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                            </svg>
+                        </div>
+                    </div> -->
+                    <!-- <img style="position: absolute; height:70px; top: 16em; left: 35em;"
+                        src="../../static//images/Rheostat_crop.png" alt="Rheostat">
+                    <div
+                        style="display: flex; flex-direction: row-reverse; position: absolute; top: 20.2em; left: 29em;">
+                        <div class="rang" style="position: relative; top: -1.1em; left: 10.6em;">
+                            <div class="rang-title2">
+                                <input class="rang-number2" id="show01" type="text" value="0" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div>
+                            <input class="rang-slider" disabled="true" id="range1" type="range" min="0" max="5"
+                                value="0" />
+                        </div>
+                    </div> -->
+
+                    <img style="position: absolute; padding-left: 0px; left: 67em; top: 3.5em;" class="amMeter"
+                        src="../../static/images/Voltmeter.png" alt="Voltmeter" width="170" height="170">
+                    <div class="meter2" style="position: absolute;top: -10em;left: 47.8em;">
+                        <div class="rang" style="position: absolute;top: 10.5em;left: 18.3em;">
+                            <div class="rang-title">
+                                <input class="rang-number" id="show2" type="text" value="0" disabled="disabled" />
+                            </div>
+                            <br>Voltmeter
+                        </div>
+                        <div>
+                            <svg class="meter" style="position: absolute;top: 1.5em;left: 16em;">
+                                <polygon class="meter-clock" id="meter2" points="128,145 137,90 145,145"></polygon><!--values to be added-->
+                                <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="div1" style="left: 48em; position:relative; top:20em;">
+                        <img src="../../static/images/grd.png" alt="ground" style="height: 60px;width: 40px;">
+                    </div>
+                    <div  style="left: 36em; position:relative; top:16em;">
+                        <img id="myimage2" class="mcbSwitch" src="../../static/images/push1.png" alt="+12V" style="height: 30px;width: 30px;">
+                    </div>
+                    <div style="left: 43em; position:relative; top:14em;">
+                        <img id="myimage3" class="mcbSwitch" src="../../static/images/push1.png" alt="-12V" style="height: 30px;width: 30px;">
+                    </div>
+                    <div class="div1" style="left: 38em; position:relative; top:11em;">
+                        <h6>+12V</h6>
+                    </div>
+                    <div class="div1" style="left: 45em; position:relative; top: 8.5em;">
+                        <h6>-12V</h6>
+                    </div>
+                    <!-- <img style="position: absolute; padding-left: 0px; left: 27em; top: 0.5;" class="amMeter"
+                        src="../../static/images/Ammeter.png" alt="Ammeter" width="170" height="170">
+                    <div class="meter3" style="position: absolute;top: -1em;left: 3.5em;">
+                        <div class="rang" style="position: absolute;top: -0.8em;left: 31.4em;">
+                            <div class="rang-title">
+                                <input class="rang-number" id="show3" type="text" value="0" disabled="disabled" />
+                            </div>
+                            <br>
+                            Ammeter
+                        </div>
+                        <div style="position: absolute;top: -10.3em;left: 27.2em;">
+                            <svg class="meter">
+                                <polygon class="meter-clock" id="meter3" points="129,145 137,90 145,145"></polygon>
+                                <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                            </svg>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="column24" style="border-right: none;">
+                    <div style="position: relative; left: -29.1em; top:2.5em;">
+                        <img style="height:100px; width:100px;" src="../../static/images/op741.png" id="cirmover1" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div style="position: relative; left: -29.1em; top:9.5em;">
+                        <img style="height:100px; width:100px;" src="../../static/images/op741.png" id="cirmover2" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div style="position: relative; left: -12.1em; top:-4.5em;">
+                        <img style="height:100px; width:100px;" src="../../static/images/op741.png" id="cirmover3" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div style="position: relative; left: -17.1em; top:-15.5em;">
+                        
+                        <img style="height:60px; width:50px;" src="../../static/images/Resistor-Symbol.png" id="cirmover4" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div class="div" style="left: -16em; position:relative; top:-18em;">
+                        <h6>R<sub>A</sub></h6>
+                    </div>
+                    <div style="position: relative; left: -17.1em; top:-10.5em;">
+                        
+                        <img style="height:60px; width:50px;" src="../../static/images/Resistor-Symbol.png" id="cirmover5" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div class="div" style="left: -16.5em; position:relative; top:-13.5em;">
+                        <h6>R<sub>B</sub>=R<sub>A</sub></h6>
+                    </div>
+                    <div style="position: relative; left: -10.1em; top:-35.5em;">
+                        
+                        <img style="height:60px; width:50px;" src="../../static/images/Resistor-Symbol.png" id="cirmover6" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div class="div" style="left: -9em; position:relative; top:-38em;">
+                        <h6>R<sub>F</h6>
+                    </div>
+                    <div style="position: relative; left: -10.1em; top:-24.5em;">
+                        
+                        <img style="height:60px; width:50px;" src="../../static/images/Resistor-Symbol.png" id="cirmover7" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div class="div" style="left: -9.5em; position:relative; top:-27em;">
+                        <h6>R<sub>C</sub>=R<sub>F</sub></h6>
+                    </div>
+                    <div style="position: relative; left: -4.1em; top:-36.5em;">
+                        
+                        <img style="height:40px; width:30px;" src="../../static/images/res1.png" id="cirmover7" />
+                        <!-- <div style="position: absolute;top:-1.4em; left: 3.5em;"><b>DC Shunt Motor</b></div> -->
+                    </div>
+                    <div class="div" style="left: -2em; position:relative; top:-40em;">
+                        <h6>R<sub>L</sub></h6>
+                    </div>
+                    
+                </div>
+
+                
+                
+            </div>
+
+            <div class="row">
+                <div class="column8">
+                    <br>
+                    <div>
+                        <button id="check-button"
+                            style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Check</button>
+                    </div>
+                    <br>
+                    <div>
+                        <button id="addToTable" disabled="true"
+                            style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Add to
+                            table</button>
+
+                    </div>
+                    <!-- <br> -->
+                    <!-- <div>
+                        <button id="graph" onclick="drawgraph();" disabled="true"
+                            style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Graph
+                        </button>
+                    </div> -->
+                    <br>
+                    <div>
+                        <button id="print" onclick="window.print();"
+                            style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Print
+                        </button>
+                    </div>
+                    <br>
+                    <!-- <br><br> -->
+                    <div>
+                        <button id="reset" type="reset" onclick="window.location.reload();"
+                            style="background-color:#f82d12; border:none; padding: 5px; border-radius:5px">Reset</button>
+                    </div>
+                </div>
+                <div class="column12">
+                    <div style="position:relative;left:11.5em;top:4.5em;">
+                        <table id="table2" class="table" ; style="position: relative;right:11.5em;top:-4.6em; ">
+                            <tr>
+                                <th>Conditions:</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>R<sub>C</sub>=R<sub>F</sub>=10KΩ</td>
+                            </tr>
+                            <tr>
+                                <td>R<sub>A</sub>=R=1KΩ</td>
+                            </tr>
+                            <tr>
+                                <td>R<sub>B</sub>=R<sub>A</sub>=R<sub>L</sub>=1KΩ</td>
+                            </tr>
+                            <tr>
+                                <td>R<sub>1</sub>=R<sub>2</sub>=R<sub>x</sub>=1KΩ</td>
+                            </tr>
+                            <tr>
+                                <td>R<sub>3</sub>=(1±ΔR)KΩ</td>
+                            </tr>
+                            <tr>
+                                <td>V<sub>DC</sub>=+5V</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="column40" style="border-right: none;">
+                    <div style="position:relative;left:11.5em;top:4.5em;">
+                        <table id="table1" class="table" ; style="position: relative;right:11.5em;top:-4.6em; ">
+                            <tr>
+                                <th>Sl.No.</th>
+                                <th>ΔR(in Ω)</th>
+                                <th>V<sub>out</sub>(in V)</th>
+                                
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="column40">
+                    <!-- <div style="position: relative;"><b>Armature Current vs Speed Graph</b></div>
+                    <div class="container" style="position: relative; left: 1.6em; top: 1em;">
+                        <div class="box" id="myDiv1" style="width:420px;height:260px;"></div>
+                    </div> -->
+                    <div style="position:relative;left:11.6em;top:4.5em;">
+                        <table id="table3" class="table" ; style="position: relative;right:11.5em;top:-4.6em; ">
+                            <tr>
+                                <th>Working Formulas:</th>
+                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    R<sub>1</sub>/R<sub>2</sub>=R<sub>3</sub>/R<sub>x</sub>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    V<sub>out</sub>=(R<sub>F</sub>*ΔR*V<sub>DC</sub>)/(R<sub>A</sub>*4R)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    N.B:if V<sub>A</sub> less than V<sub>B</sub>, V<sub>out</sub>=-ve
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div><u><B>Instructions</B></u><br>
+                    <span>
+                        
+                        <B>Step 1: </B>Click "Check" button.
+                        <li>if connection is correct, an alert appers. Click ok. Now, go to step 4.</li>
+                        
+                        <li>if connection is wrong, an alert appers. Click ok. Now, go to step 3.</li>
+                        <B>Step 2: </B>Switch on the supply voltage to power up the ICs.<br>
+                        <B>Step 3: </B>Check the connection, if incorrect, click on node <b>number</b> to remove any
+                        particular
+                        connection(s) or click on reset button and start from step 1.<br>
+                        <B>Step 4: </B>Move the slider to change the resistance values.<br>
+                        <B>Step 5: </B>Take reading from Voltmeter.<br>
+                        <B>Step 6: </B>Click "Add to table" button to insert the values in the table.<br>
+                        <B>Step 7: </B>Follow the procedure to check for both positive & negative values of amplifier gain.<br>
+                        <B>Step 8: </B> Click "Print" button, to print the full connections with in
+                        landscape mode.
+
+                    </span>
+                </div>
+                <!-- <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4250097576674323"
+                    crossorigin="anonymous"></script>
+                //InBetween
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4250097576674323"
+                    data-ad-slot="5407921571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script> -->
+                <!-- <script>
+                    var slider = document.getElementById("range2");
+                    var output = document.getElementById("show04");
+                    output.innerHTML = slider.value;
+
+                    slider.oninput = function() {
+                    output.innerHTML = Number(this.value).toFixed(1);
+                    }
+                </script> -->
+            </div>
+            <div class="footer noPrint"
+                style="text-align: center; position: relative; top: 2em; background-color:rgb(236, 192, 126);">
+                <div>
+                    <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12.5px;">
+                        Inspired from <a href="https://he-coep.vlabs.ac.in/" target="_blank">he-coep.vlabs.ac.in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/jsplumb1.js"></script>
+    <script src="../../static/js/4/exp2.js"></script>
+
+</body>
+
+</html>

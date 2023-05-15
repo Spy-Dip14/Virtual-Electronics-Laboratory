@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interfacing LED to 8085 through 8255</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="Interfacing LED to 8085 through 8255 & to blink LED">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4250097576674323"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/4/exp3.css">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="../../static/js/graph.ob.js"></script>
+</head>
+
+<body style="background-color: rgb(236, 228, 180);">
+    <div id="root" style="margin: 0px auto;">
+        <div id="connection-table">
+            <B>Preliminary Step: </B>Make the proper connection by clicking the node as instructed below. If the wire is
+            misplaced, click the node number to deattach the nodes' wire. <br>
+            <table>
+                <tr>
+                    <td><B>From</B></td>
+                    <td>121</td>
+                    <td>120</td>
+                    <td>119</td>
+                    <td>118</td>
+                    <td>157</td>
+                    <td>156</td>
+                    <td>14</td>
+                    <td>13</td>
+                    <td>159</td>
+                    <td>31</td>
+                    <td>32</td>
+                    <td>51,124,94,95,96,97,98,99,66,65</td>
+                    <td>70</td>
+                    <td>69</td>
+                    <td>88</td>
+                    <td>35</td>
+                    <td>112</td>
+                    <td>113</td>
+                    <td>114</td>
+                    <td>115</td>
+                    <td>116</td>
+                    <td>117</td>
+                    
+                </tr>
+                <tr>
+                    <td><B>To</B></td>
+                    <td>106</td>
+                    <td>107</td>
+                    <td>108</td>
+                    <td>109</td>
+                    <td>110</td>
+                    <td>111</td>
+                    <td>126</td>
+                    <td>127</td>
+                    <td>123</td>
+                    <td>62</td>
+                    <td>63</td>
+                    <td>93</td>
+                    <td>122</td>
+                    <td>153</td>
+                    <td>159</td>
+                    <td>64</td>
+                    <td>105</td>
+                    <td>104</td>
+                    <td>103</td>
+                    <td>102</td>
+                    <td>101</td>
+                    <td>100</td>
+                    
+                </tr>
+                <tr>
+                    <td><B>From</B></td>
+                    <td>158</td>
+                    <td>35</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>17</td>
+                    <td>16</td>
+                    <td>78</td>
+                    <td>15</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>22,23,24,25,26,27,28,29,43,
+                        <br>46,47,50,53,56,57,60</td>
+                    <td>38</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>160</td>
+                </tr>
+                <tr>
+                    <td><B>To</B></td>
+                    <td>41,61,67,143</td>
+                    <td>84</td>
+                    <td>2,3</td>
+                    <td>152</td>
+                    <td>76</td>
+                    <td>77</td>
+                    <td>83</td>
+                    <td>82</td>
+                    <td>79</td>
+                    <td>80</td>
+                    <td>81</td>
+                    <td>160</td>
+                    <td>52</td>
+                    <td>44,151</td>
+                    <td>45,150</td>
+                    <td>48,149</td>
+                    <td>49,148</td>
+                    <td>54,147</td>
+                    <td>55,146</td>
+                    <td>58,145</td>
+                    <td>59,144</td>
+                    <td>135</td>
+                </tr>
+            </table>
+        </div>
+        <div id="wrapper" style="position:relative; width:1360px; background-color: rgb(255, 255, 255);">
+            <div class="littledot" id="ld1"></br><a href="#" class="cmdLink detach" rel="ld1">1</a>
+            </div>
+            <div class="littledot" id="ld2"></br><a href="#" class="cmdLink detach" rel="ld2">2</a>
+            </div>
+            <div class="littledot" id="ld3"></br><a href="#" class="cmdLink detach" rel="ld3">3</a>
+            </div>
+            <div class="littledot" id="ld4"></br><a href="#" class="cmdLink detach" rel="ld4">4</a>
+            </div>
+            <div class="littledot" id="ld5"></br><a href="#" class="cmdLink detach" rel="ld5">5</a>
+            </div>
+            <div class="littledot" id="ld6"></br><a href="#" class="cmdLink detach" rel="ld6">6</a>
+            </div>
+            <div class="littledot" id="ld7"></br><a href="#" class="cmdLink detach" rel="ld7">7</a>
+            </div>
+            <div class="littledot" id="ld8"></br><a href="#" class="cmdLink detach" rel="ld8">8</a>
+            </div>
+            <div class="littledot" id="ld9"></br><a href="#" class="cmdLink detach" rel="ld9">9</a>
+            </div>
+            <div class="littledot" id="ld10"></br><a href="#" class="cmdLink detach" rel="ld10">10</a>
+            </div>
+            <div class="littledot" id="ld11"></br><a href="#" class="cmdLink detach" rel="ld11">11</a>
+            </div>
+            <div class="littledot" id="ld12"></br><a href="#" class="cmdLink detach" rel="ld12">12</a>
+            </div>
+            <div class="littledot" id="ld13"></br><a href="#" class="cmdLink detach" rel="ld13">13</a>
+            </div>
+            <div class="littledot" id="ld14"></br><a href="#" class="cmdLink detach" rel="ld14">14</a>
+            </div>
+            <div class="littledot" id="ld15"></br><a href="#" class="cmdLink detach" rel="ld15">15</a>
+            </div>
+            <div class="littledot" id="ld16"></br><a href="#" class="cmdLink detach" rel="ld16">16</a>
+            </div>
+            <div class="littledot" id="ld17"></br><a href="#" class="cmdLink detach" rel="ld17">17</a>
+            </div>
+            <div class="littledot" id="ld18"></br><a href="#" class="cmdLink detach" rel="ld18">18</a>
+            </div>
+            <div class="littledot" id="ld19"></br><a href="#" class="cmdLink detach" rel="ld19">19</a>
+            </div>
+            <div class="littledot" id="ld20"></br><a href="#" class="cmdLink detach" rel="ld20">20</a>
+            </div>
+            <div class="littledot" id="ld21"></br><a href="#" class="cmdLink detach" rel="ld21">21</a>
+            </div>
+            <div class="littledot" id="ld22"></br><a href="#" class="cmdLink detach" rel="ld22">22</a>
+            </div>
+            <div class="littledot" id="ld23"></br><a href="#" class="cmdLink detach" rel="ld23">23</a>
+            </div>
+            <div class="littledot" id="ld24"></br><a href="#" class="cmdLink detach" rel="ld24">24</a>
+            </div>
+            <div class="littledot" id="ld25"></br><a href="#" class="cmdLink detach" rel="ld25">25</a>
+            </div>
+            <div class="littledot" id="ld26"></br><a href="#" class="cmdLink detach" rel="ld26">26</a>
+            </div>
+            <div class="littledot" id="ld27"></br><a href="#" class="cmdLink detach" rel="ld27">27</a>
+            </div>
+            <div class="littledot" id="ld28"></br><a href="#" class="cmdLink detach" rel="ld28">28</a>
+            </div>
+            <div class="littledot" id="ld29"></br><a href="#" class="cmdLink detach" rel="ld29">29</a>
+            </div>
+            <div class="littledot" id="ld30"></br><a href="#" class="cmdLink detach" rel="ld30">30</a>
+            </div>
+            <div class="littledot" id="ld31"></br><a href="#" class="cmdLink detach" rel="ld31">31</a>
+            </div>
+            <div class="littledot" id="ld32"></br><a href="#" class="cmdLink detach" rel="ld32">32</a>
+            </div>
+            <div class="littledot" id="ld33"></br><a href="#" class="cmdLink detach" rel="ld33">33</a>
+            </div>
+            <div class="littledot" id="ld34"></br><a href="#" class="cmdLink detach" rel="ld34">34</a>
+            </div>
+            <div class="littledot" id="ld35"></br><a href="#" class="cmdLink detach" rel="ld35">35</a>
+            </div>
+            <div class="littledot" id="ld36"></br><a href="#" class="cmdLink detach" rel="ld36">36</a>
+            </div>
+            <div class="littledot" id="ld37"></br><a href="#" class="cmdLink detach" rel="ld37">37</a>
+            </div>
+            <div class="littledot" id="ld38"></br><a href="#" class="cmdLink detach" rel="ld38">38</a>
+            </div>
+            <div class="littledot" id="ld39"></br><a href="#" class="cmdLink detach" rel="ld39">39</a>
+            </div>
+            <div class="littledot" id="ld40"></br><a href="#" class="cmdLink detach" rel="ld40">40</a>
+            </div>
+            <div class="littledot" id="ld41"></br><a href="#" class="cmdLink detach" rel="ld41">41</a>
+            </div>
+            <div class="littledot" id="ld42"></br><a href="#" class="cmdLink detach" rel="ld42">42</a>
+            </div>
+            <div class="littledot" id="ld43"></br><a href="#" class="cmdLink detach" rel="ld43">43</a>
+            </div>
+            <div class="littledot" id="ld44"></br><a href="#" class="cmdLink detach" rel="ld44">44</a>
+            </div>
+            <div class="littledot" id="ld45"></br><a href="#" class="cmdLink detach" rel="ld45">45</a>
+            </div>
+            <div class="littledot" id="ld46"></br><a href="#" class="cmdLink detach" rel="ld46">46</a>
+            </div>
+            <div class="littledot" id="ld47"></br><a href="#" class="cmdLink detach" rel="ld47">47</a>
+            </div>
+            <div class="littledot" id="ld48"></br><a href="#" class="cmdLink detach" rel="ld48">48</a>
+            </div>
+            <div class="littledot" id="ld49"></br><a href="#" class="cmdLink detach" rel="ld49">49</a>
+            </div>
+            <div class="littledot" id="ld50"></br><a href="#" class="cmdLink detach" rel="ld50">50</a>
+            </div>
+            <div class="littledot" id="ld51"></br><a href="#" class="cmdLink detach" rel="ld51">51</a>
+            </div>
+            <div class="littledot" id="ld52"></br><a href="#" class="cmdLink detach" rel="ld52">52</a>
+            </div>
+            <div class="littledot" id="ld53"></br><a href="#" class="cmdLink detach" rel="ld53">53</a>
+            </div>
+            <div class="littledot" id="ld54"></br><a href="#" class="cmdLink detach" rel="ld54">54</a>
+            </div>
+            <div class="littledot" id="ld55"></br><a href="#" class="cmdLink detach" rel="ld55">55</a>
+            </div>
+            <div class="littledot" id="ld56"></br><a href="#" class="cmdLink detach" rel="ld56">56</a>
+            </div>
+            <div class="littledot" id="ld57"></br><a href="#" class="cmdLink detach" rel="ld57">57</a>
+            </div>
+            <div class="littledot" id="ld58"></br><a href="#" class="cmdLink detach" rel="ld58">58</a>
+            </div>
+            <div class="littledot" id="ld59"></br><a href="#" class="cmdLink detach" rel="ld59">59</a>
+            </div>
+            <div class="littledot" id="ld60"></br><a href="#" class="cmdLink detach" rel="ld60">60</a>
+            </div>
+            <div class="littledot" id="ld61"></br><a href="#" class="cmdLink detach" rel="ld61">61</a>
+            </div>
+            <div class="littledot" id="ld62"></br><a href="#" class="cmdLink detach" rel="ld62">62</a>
+            </div>
+            <div class="littledot" id="ld63"></br><a href="#" class="cmdLink detach" rel="ld63">63</a>
+            </div>
+            <div class="littledot" id="ld64"></br><a href="#" class="cmdLink detach" rel="ld64">64</a>
+            </div>
+            <div class="littledot" id="ld65"></br><a href="#" class="cmdLink detach" rel="ld65">65</a>
+            </div>
+            <div class="littledot" id="ld66"></br><a href="#" class="cmdLink detach" rel="ld66">66</a>
+            </div>
+            <div class="littledot" id="ld67"></br><a href="#" class="cmdLink detach" rel="ld67">67</a>
+            </div>
+            <div class="littledot" id="ld68"></br><a href="#" class="cmdLink detach" rel="ld68">68</a>
+            </div>
+            <div class="littledot" id="ld69"></br><a href="#" class="cmdLink detach" rel="ld69">69</a>
+            </div>
+            <div class="littledot" id="ld70"></br><a href="#" class="cmdLink detach" rel="ld70">70</a>
+            </div>
+            <div class="littledot" id="ld71"></br><a href="#" class="cmdLink detach" rel="ld71">71</a>
+            </div>
+            <div class="littledot" id="ld72"></br><a href="#" class="cmdLink detach" rel="ld72">72</a>
+            </div>
+            <div class="littledot" id="ld73"></br><a href="#" class="cmdLink detach" rel="ld73">73</a>
+            </div>
+            <div class="littledot" id="ld74"></br><a href="#" class="cmdLink detach" rel="ld74">74</a>
+            </div>
+            <div class="littledot" id="ld75"></br><a href="#" class="cmdLink detach" rel="ld75">75</a>
+            </div>
+            <div class="littledot" id="ld76"></br><a href="#" class="cmdLink detach" rel="ld76">76</a>
+            </div>
+            <div class="littledot" id="ld77"></br><a href="#" class="cmdLink detach" rel="ld77">77</a>
+            </div>
+            <div class="littledot" id="ld78"></br><a href="#" class="cmdLink detach" rel="ld78">78</a>
+            </div>
+            <div class="littledot" id="ld79"></br><a href="#" class="cmdLink detach" rel="ld79">79</a>
+            </div>
+            <div class="littledot" id="ld80"></br><a href="#" class="cmdLink detach" rel="ld80">80</a>
+            </div>
+            <div class="littledot" id="ld81"></br><a href="#" class="cmdLink detach" rel="ld81">81</a>
+            </div>
+            <div class="littledot" id="ld82"></br><a href="#" class="cmdLink detach" rel="ld82">82</a>
+            </div>
+            <div class="littledot" id="ld83"></br><a href="#" class="cmdLink detach" rel="ld83">83</a>
+            </div>
+            <div class="littledot" id="ld84"></br><a href="#" class="cmdLink detach" rel="ld84">84</a>
+            </div>
+            <div class="littledot" id="ld85"></br><a href="#" class="cmdLink detach" rel="ld85">85</a>
+            </div>
+            <div class="littledot" id="ld86"></br><a href="#" class="cmdLink detach" rel="ld86">86</a>
+            </div>
+            <div class="littledot" id="ld87"></br><a href="#" class="cmdLink detach" rel="ld87">87</a>
+            </div>
+            <div class="littledot" id="ld88"></br><a href="#" class="cmdLink detach" rel="ld88">88</a>
+            </div>
+            <div class="littledot" id="ld89"></br><a href="#" class="cmdLink detach" rel="ld89">89</a>
+            </div>
+            <div class="littledot" id="ld90"></br><a href="#" class="cmdLink detach" rel="ld90">90</a>
+            </div>
+            <div class="littledot" id="ld91"></br><a href="#" class="cmdLink detach" rel="ld91">91</a>
+            </div>
+            <div class="littledot" id="ld92"></br><a href="#" class="cmdLink detach" rel="ld92">92</a>
+            </div>
+            <div class="littledot" id="ld93"></br><a href="#" class="cmdLink detach" rel="ld93">93</a>
+            </div>
+            <div class="littledot" id="ld94"></br><a href="#" class="cmdLink detach" rel="ld94">94</a>
+            </div>
+            <div class="littledot" id="ld95"></br><a href="#" class="cmdLink detach" rel="ld95">95</a>
+            </div>
+            <div class="littledot" id="ld96"></br><a href="#" class="cmdLink detach" rel="ld96">96</a>
+            </div>
+            <div class="littledot" id="ld97"></br><a href="#" class="cmdLink detach" rel="ld97">97</a>
+            </div>
+            <div class="littledot" id="ld98"></br><a href="#" class="cmdLink detach" rel="ld98">98</a>
+            </div>
+            <div class="littledot" id="ld99"></br><a href="#" class="cmdLink detach" rel="ld99">99</a>
+            </div>
+            <div class="littledot" id="ld100"></br><a href="#" class="cmdLink detach" rel="ld100">100</a>
+            </div>
+            <div class="littledot" id="ld101"></br><a href="#" class="cmdLink detach" rel="ld101">101</a>
+            </div>
+            <div class="littledot" id="ld102"></br><a href="#" class="cmdLink detach" rel="ld102">102</a>
+            </div>
+            <div class="littledot" id="ld103"></br><a href="#" class="cmdLink detach" rel="ld103">103</a>
+            </div>
+            <div class="littledot" id="ld104"></br><a href="#" class="cmdLink detach" rel="ld104">104</a>
+            </div>
+            <div class="littledot" id="ld105"></br><a href="#" class="cmdLink detach" rel="ld105">105</a>
+            </div>
+            <div class="littledot" id="ld106"></br><a href="#" class="cmdLink detach" rel="ld106">106</a>
+            </div>
+            <div class="littledot" id="ld107"></br><a href="#" class="cmdLink detach" rel="ld107">107</a>
+            </div>
+            <div class="littledot" id="ld108"></br><a href="#" class="cmdLink detach" rel="ld108">108</a>
+            </div>
+            <div class="littledot" id="ld109"></br><a href="#" class="cmdLink detach" rel="ld109">109</a>
+            </div>
+            <div class="littledot" id="ld110"></br><a href="#" class="cmdLink detach" rel="ld110">110</a>
+            </div>
+            <div class="littledot" id="ld111"></br><a href="#" class="cmdLink detach" rel="ld111">111</a>
+            </div>
+            <div class="littledot" id="ld112"></br><a href="#" class="cmdLink detach" rel="ld112">112</a>
+            </div>
+            <div class="littledot" id="ld113"></br><a href="#" class="cmdLink detach" rel="ld113">113</a>
+            </div>
+            <div class="littledot" id="ld114"></br><a href="#" class="cmdLink detach" rel="ld114">114</a>
+            </div>
+            <div class="littledot" id="ld115"></br><a href="#" class="cmdLink detach" rel="ld115">115</a>
+            </div>
+            <div class="littledot" id="ld116"></br><a href="#" class="cmdLink detach" rel="ld116">116</a>
+            </div>
+            <div class="littledot" id="ld117"></br><a href="#" class="cmdLink detach" rel="ld117">117</a>
+            </div>
+            <div class="littledot" id="ld118"></br><a href="#" class="cmdLink detach" rel="ld118">118</a>
+            </div>
+            <div class="littledot" id="ld119"></br><a href="#" class="cmdLink detach" rel="ld119">119</a>
+            </div>
+            <div class="littledot" id="ld120"></br><a href="#" class="cmdLink detach" rel="ld120">120</a>
+            </div>
+            <div class="littledot" id="ld121"></br><a href="#" class="cmdLink detach" rel="ld121">121</a>
+            </div>
+            <div class="littledot" id="ld122"></br><a href="#" class="cmdLink detach" rel="ld122">122</a>
+            </div>
+            <div class="littledot" id="ld123"></br><a href="#" class="cmdLink detach" rel="ld123">123</a>
+            </div>
+            <div class="littledot" id="ld124"></br><a href="#" class="cmdLink detach" rel="ld124">124</a>
+            </div>
+            <div class="littledot" id="ld125"></br><a href="#" class="cmdLink detach" rel="ld125">125</a>
+            </div>
+            <div class="littledot" id="ld126"></br><a href="#" class="cmdLink detach" rel="ld126">126</a>
+            </div>
+            <div class="littledot" id="ld127"></br><a href="#" class="cmdLink detach" rel="ld127">127</a>
+            </div>
+            <div class="littledot" id="ld128"></br><a href="#" class="cmdLink detach" rel="ld128">128</a>
+            </div>
+            <div class="littledot" id="ld129"></br><a href="#" class="cmdLink detach" rel="ld129">129</a>
+            </div>
+            <div class="littledot" id="ld130"></br><a href="#" class="cmdLink detach" rel="ld130">130</a>
+            </div>
+            <div class="littledot" id="ld131"></br><a href="#" class="cmdLink detach" rel="ld131">131</a>
+            </div>
+            <div class="littledot" id="ld132"></br><a href="#" class="cmdLink detach" rel="ld132">132</a>
+            </div>
+            <div class="littledot" id="ld133"></br><a href="#" class="cmdLink detach" rel="ld133">133</a>
+            </div>
+            <div class="littledot" id="ld134"></br><a href="#" class="cmdLink detach" rel="ld134">134</a>
+            </div>
+            <div class="littledot" id="ld135"></br><a href="#" class="cmdLink detach" rel="ld135">135</a>
+            </div>
+            <div class="littledot" id="ld136"></br><a href="#" class="cmdLink detach" rel="ld136">136</a>
+            </div>
+            <div class="littledot" id="ld137"></br><a href="#" class="cmdLink detach" rel="ld137">137</a>
+            </div>
+            <div class="littledot" id="ld138"></br><a href="#" class="cmdLink detach" rel="ld138">138</a>
+            </div>
+            <div class="littledot" id="ld139"></br><a href="#" class="cmdLink detach" rel="ld139">139</a>
+            </div>
+            <div class="littledot" id="ld140"></br><a href="#" class="cmdLink detach" rel="ld140">140</a>
+            </div>
+            <div class="littledot" id="ld141"></br><a href="#" class="cmdLink detach" rel="ld141">141</a>
+            </div>
+            <div class="littledot" id="ld142"></br><a href="#" class="cmdLink detach" rel="ld142">142</a>
+            </div>
+            <div class="littledot" id="ld143"></br><a href="#" class="cmdLink detach" rel="ld143">143</a>
+            </div>
+            <div class="littledot" id="ld144"></br><a href="#" class="cmdLink detach" rel="ld144">144</a>
+            </div>
+            <div class="littledot" id="ld145"></br><a href="#" class="cmdLink detach" rel="ld145">145</a>
+            </div>
+            <div class="littledot" id="ld146"></br><a href="#" class="cmdLink detach" rel="ld146">146</a>
+            </div>
+            <div class="littledot" id="ld147"></br><a href="#" class="cmdLink detach" rel="ld147">147</a>
+            </div>
+            <div class="littledot" id="ld148"></br><a href="#" class="cmdLink detach" rel="ld148">148</a>
+            </div>
+            <div class="littledot" id="ld149"></br><a href="#" class="cmdLink detach" rel="ld149">149</a>
+            </div>
+            <div class="littledot" id="ld150"></br><a href="#" class="cmdLink detach" rel="ld150">150</a>
+            </div>
+            <div class="littledot" id="ld151"></br><a href="#" class="cmdLink detach" rel="ld151">151</a>
+            </div>
+            <div class="littledot" id="ld152"></br><a href="#" class="cmdLink detach" rel="ld152">152</a>
+            </div>
+            <div class="littledot" id="ld153"></br><a href="#" class="cmdLink detach" rel="ld153">153</a>
+            </div>
+            <div class="littledot" id="ld154"></br><a href="#" class="cmdLink detach" rel="ld154">154</a>
+            </div>
+            <div class="littledot" id="ld155"></br><a href="#" class="cmdLink detach" rel="ld155">155</a>
+            </div>
+            <div class="littledot" id="ld156"></br><a href="#" class="cmdLink detach" rel="ld156">156</a>
+            </div>
+            <div class="littledot" id="ld157"></br><a href="#" class="cmdLink detach" rel="ld157">157</a>
+            </div>
+            
+            <div class="littledot" id="ld158"></br><a href="#" class="cmdLink detach" rel="ld158">158</a>
+            </div>
+            <div class="littledot" id="ld159"></br><a href="#" class="cmdLink detach" rel="ld159">159</a>
+            </div>
+            <div class="littledot" id="ld160"></br><a href="#" class="cmdLink detach" rel="ld160">160<br>(Latch Enabled Address)</a>
+            </div>
+
+
+
+            <div class="row">
+                <div class="column">
+
+                    <div class="x0" style="position: absolute; left: 1em; top: 1em;">
+                        <div>
+                            <button id="check-button"
+                                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Check</button>
+                        </div>
+                        <div>
+                            <button disabled="true" id="code" onclick="viewCode()"
+                                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">View Code</button>
+                        </div>
+                        <div>
+                            <button disabled="true" id="add1" onclick="addToTable1()"
+                                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">View CW Status</button>
+                        </div>
+                        <div style="display: flex;flex-direction: row;">
+                            <button disabled="true" id="add2" 
+                                style="cursor:pointer; background-color:#27D447; border:none; padding: 5px; border-radius:5px">Add to
+                                Table: 0
+                            </button>
+                            <!-- <button disabled="true" id="click" style="position: relative; cursor: pointer; width:44px;height:44px;border-radius:20px;background-color: #27D447; border: none;text-align: center;color: antiquewhite;">0</button> -->
+                            <!-- <div style="position: absolute; top: 15.5em; left: 1em; width: 64px; height: 44px; background-color: #27D447; border-radius: 20px; text-align: center; display: inline-block; cursor: pointer;">
+                                <button id="click" style="cursor: pointer; width:64px;height:44px;border-radius:20px;background-color: #27D447; border: none;text-align: center;color: antiquewhite;">0</button>
+                            </div> -->
+                        </div>
+                        <!-- <div>
+                            <button id="graph" disabled="true" onclick="drawgraph()"
+                                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Graph
+                            </button>
+                        </div> -->
+
+                        <div>
+                            <button id="print" onclick="window.print();"
+                                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Print
+                            </button>
+                        </div>
+
+                        <div>
+                            <button id="reset" type="reset" onclick="window.location.reload();"
+                                style="background-color:#f82d12; border:none; padding: 5px; border-radius:5px">Reset</button>
+                        </div>
+                    </div>
+                    <!--POWER SUPPLY-->
+                    <div class="x1" style="position:absolute; left: 1em; top: 13em;">
+                        <br><br><br>
+                        <div style="top: -1em;">
+                            <img id="myimage1" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                            <img id="myimage2" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                            <img id="myimage3" class="mcbSwitch" src="../../static/images/push1.png" alt="MCB Switch"
+                                width="25" height="25">
+                        </div>
+                        <div style="top:-1em;">
+                            <img id="myimage" class="mcbSwitch" src="../../static/images/mcboff.png" alt="MCB Switch"
+                                onclick="mcbonoff();" width="78" height="120">
+                        </div>
+                        <p><b>220 V, DC supply</b><b><br> Converted to 5 V,<br> DC supply</b></p>
+                    </div>
+
+                    <!--3 POINT STARTER-->
+                    <div class="x2" style="position: absolute;left: 12em; top: 4em;">
+                        <div style="left: 3.5em;top: 11.5em;"><b>8085 Microprocessor</b>
+                        </div>
+                        <img style="width:300; height: 240;" class="variacBox" src="../../static/images/8085_pin_configuration.jpg"
+                            alt="8085 MP">
+                    </div>
+                    <!--VOLTMETER-->
+                    <div class="x5" style="position: absolute;left: 42.5em; top: 2.5em">
+                        <img style="padding-left: 60px" src="../../static/images/ic 74ls373.png" alt="74373"
+                            width="250" height="220">
+                         <div class="meter2" style="position: absolute;top: -1em;left: -16em;">
+                            <div class="rang" style="position: absolute;top: -1em;left: 24em; color: black;">
+                                <!--<div class="rang-title">
+                                    <input class="rang-number2" id="show1" type="text" value="0" disabled="disabled" />
+                                </div>-->
+                                <br>74373
+                            </div>
+                            <div style="left: 45em;">
+                                <img style="height: 50px;width: 55px;" src="../../static/images/vcc.png" alt="VCC">
+                            </div>
+                            <!-- <div>
+                                <svg class="meter" style="position: absolute;top: -10.5em;left: 16.7em;">
+                                    <polygon class="meter-clock" id="meter1" points="129,145 137,90 145,145"></polygon>
+                                    <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                                </svg>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!--AMMETER-->
+                    <div class="x4" style="position: absolute;left: 10em; top: 53em;">
+                        <img style="padding-left: 60px" src="../../static/images/PPI8255.png" alt="8255" width="550"
+                            height="240">
+                        <div class="meter2" style="position: absolute; left: -16em; top: -1em;">
+                            <div class="rang" style="position: absolute;top: -1em;left: 18.9em; color: black;">
+                                <div class="rang-title" style="display: flex;flex-direction:row;left:45em;top:-1.5em;">
+                                    <!-- <input class="rang-number2" id="show2" type="text" value="0" disabled="disabled" /> -->
+                                    <div id="1"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                    <div id="2"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                    <div id="3"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                    <div id="4"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                    <div id="5"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                    <div id="6"><img src="../../static/images/res1.png" alt="Ammeter" width="110%"></div>
+                                </div>
+                                <!-- <div class="rang-title" style="display: flex;flex-direction:row;left:37em;top:2em;">
+                                    <input class="rang-number2" id="show2" type="text" value="0" disabled="disabled" />
+                                    <div id="1"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                                    <div id="2"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                                    <div id="3"><img src="../../static/images/res1.png" alt="Ammeter" width="100%"></div>
+                                    <div id="4"><img src="../../static/images/res1.png" alt="Ammeter" width="75%"></div>
+                                    <div id="5"><img src="../../static/images/res1.png" alt="Ammeter" width="75%"></div>
+                                    <div id="6"><img src="../../static/images/res1.png" alt="Ammeter" width="75%"></div>
+                                </div> -->
+                                <!-- <br>8255 -->
+                            </div>
+                            <!-- <div>
+                                <svg class="meter" style="position: absolute;top: -10.5em;left: 16.7em;">
+                                    <polygon class="meter-clock" id="meter2" points="129,145 137,90 145,145"></polygon>
+                                    <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                                </svg>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!--VOLTMETER-->
+                    <!-- <div class="x3" style="position: absolute;left: 64em; top: 0.5em;">
+                        <img style="padding-left: 60px" class="voltMeter" src="../../static/images/Voltmeter.png"
+                            alt="Voltmeter" width="170" height="200">
+                        <div class="meter1" style="position: absolute;top: -1em; left: -5.3em;">
+                            <div class="rang" style="position: absolute;top: -1em;left: 8em;">
+                                <div class="rang-title">
+                                    <input class="rang-number2" id="show3" type="text" value="0" disabled="disabled" />
+                                </div>
+                                <br>Voltmeter
+                            </div>
+                            <div style="position: absolute;top:-10.5em;left: 5.8em;">
+                                <svg class="meter">
+                                    <polygon class="meter-clock" id="meter3" points="129,145 137,90 145,145"></polygon>
+                                    <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!--Rheostat 1-->
+                    <div class="x6" style="position: absolute;left: 30em; top: 19.5em;">
+                        <div style="position: relative; left: 30.5em; top:2.8em;">
+                            <img style="width: 240px;height: 180px;" src="../../static/images/74138.jpg" />
+                            <!-- <div style="position: absolute;top:1.5em; left: 11em;"><b>74138</b></div> -->
+                        </div>
+                        <div style="display: flex; position: relative; top: -2.5em; left: 2.5em;">
+                            <div class="rang" style="position: relative; top: -1.2em;">
+                                <!-- <div class="rang-title2">
+                                    <input class="rang-number2" id="show01" type="text" value="5" disabled="disabled" />
+                                </div> -->
+                            </div>
+                            <!-- <div style="margin-left: 0.5em;">
+                                <input class="rang-slider" disabled="true" id="range1" type="range" min="0" max="5"
+                                    value="5" />
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!--Rheostat 2-->
+                    <!-- <div class="x6" style="position: absolute;left: 42em; top: 27em;">
+                        <div style="position: relative; left: 2.1em; top:-2.8em;">
+                            <img style="width: 200px;" src="../../static/images/Rheostat_crop.png" />
+                            <div style="position: absolute;top:1.5em; left: 11em;"><b>R<sub>F</sub></b></div>
+                        </div>
+                        <div style="display: flex; position: relative; top: -2.5em; left: 2.5em;">
+                            <div class="rang" style="position: relative; top: -1.2em;">
+                                <div class="rang-title2">
+                                    <input class="rang-number2" id="show02" type="text" value="0" disabled="disabled" />
+                                </div>
+                            </div>
+                            <div style="margin-left: 0.5em;">
+                                <input class="rang-slider" disabled="true" id="range2" type="range" min="0" max="5"
+                                    value="0" />
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!--AMMETER-->
+                    <div class="x4" style="position: absolute;left: 25em; top: 32em;">
+                        <img style="padding-left: 60px" src="../../static/images/74138.jpg" alt="74138" width="240" height="180">
+                        <div class="meter2" style="position: absolute; left: -16em; top: -1em;">
+                            <div class="rang" style="position: absolute;top: -6em;left: -3.9em;">
+                                <div class="rang-title">
+                                    <!-- <input class="rang-number2" id="show4" type="text" value="0" disabled="disabled" /> -->
+                                    <img src="../../static/images/or gate.jpg" alt="Or logic" width="100">
+                                </div>
+                                <!-- <br>Ammeter -->
+                            </div>
+                            <!-- <div>
+                                <svg class="meter" style="position: absolute;top: -8.7em;left: 16.7em;">
+                                    <polygon class="meter-clock" id="meter4" points="149,125 160,75 163,124"></polygon>
+                                    <circle class="meter-circle" r="10" cx="132" cy="122"></circle>
+                                </svg>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!--1 PHASE INDUCTION MOTOR-->
+                    <div class="x6" style="position: absolute;left: 59em; top: 21em;">
+                        <div style="position: relative; left: -2em; top:18em;display: flex;flex-direction: row;">
+                            <!-- <img style="height:240px; width:240px;" src="../../static/images/Machine.png"
+                                id="cirmover1" />
+                            <div style="position: absolute;top:1.4em; left: 4em;"><b>Main Winding</b></div> -->
+                            <div><img id="a1" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                            <div><img id="a2" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                            <div><img id="a3" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                            <div><img id="a4" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                            <div><img id="a5" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                            <div><img id="a6" src="../../static/images/off.png" alt="LED" width="75%"></div>
+                        </div>
+                        <div style="top: 22em;left: 10em;"><img src="../../static/images/grd.png" alt="Ground" width="25px"></div>
+                    </div>
+                    <!--ROTOR VIEW-->
+                    <!-- <div class="x7" style="position: absolute;left: 75em; top: 20em;">
+                        <div style="top:1em;">
+                            <img src="../../static/images/Rotorouter.png" class="rotate1"
+                                style="position: absolute;top:3.1px;left: 10px;width:150px ;">
+                            <img src="../../static/images/Rotorinner.png" class="rotate" id="cirmover"
+                                style="position: absolute;top: 40px;left: 47.5px;width:75px;">
+                            <img id="rotor_blocker" src=""
+                                style="position: absolute;top:3.1px;left: 10px;width:150px ; opacity: 90%;">
+                        </div>
+                        <div style="top:-1em; left: 3em;"><b>Rotor View</b></div>
+                        <div class="rang" style="top: 9em;left: -1em;">
+                            <div class="rang-title">
+                                <input class="rang-number4" id="show5" type="text" value="0" disabled="disabled" />
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:1360px;"><!--change-->
+            <div class="column55">
+                <div>
+                    <table id="table0" class="table">
+                        <!-- <tr>
+                            <th>Sl.</th>
+                            <th>Field current (A)</th>
+                            <th>Armature Current (A)</th>
+                            <th>Armature Voltage (V)</th>
+                            <th>Voltage Across R<sub>c</sub> (V)</th>
+                            <th>Value of R<sub>c</sub> (Ohm)</th>
+                            <th>Speed (rpm)</th>
+                        </tr> -->
+                    </table>
+                    <B><b>Assembly Language Code</b></B><br><br>
+                    <div id="alc" style="display: none;">
+                        MVI A,8AH;  //Load Control Word into Accumulator<br>
+                        OUT 83H;  //Write Control Word to control port of 8255<br>
+                        IN 81H;  //Read Input from Port B with address 81H<br>
+                        MOV C,A;  //Move Input from Port C to register C<br>
+                        IN 82H;  //Read Input from Port C with address 82H<br>
+                        ADD C;  //ADD the values<br>
+                        OUT 80H;  //Output the result to Port A with address 80H<br><br>
+                        <B>IO Mapping of 8255 for Chip Selection</B><br>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th>A<sub>7</sub></th>
+                                <th>A<sub>6</sub></th>
+                                <th>A<sub>5</sub></th>
+                                <th>A<sub>4</sub></th>
+                                <th>A<sub>3</sub></th>
+                                <th>A<sub>2</sub></th>
+                                <th>A<sub>1</sub></th>
+                                <th>A<sub>0</sub></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>P<sub>A</sub></th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>80H</th>
+                            </tr>
+                            <tr>
+                                <th>P<sub>B</sub></th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>81H</th>
+                            </tr>
+                            <tr>
+                                <th>P<sub>C</sub></th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>82H</th>
+                            </tr>
+                            <tr>
+                                <th>P<sub>A</sub></th>
+                                <th>1</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>0</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>83H</th>
+                            </tr>
+                        </table>
+                        <br>
+                        <B>N.B: </B>A<sub>7</sub>➡A<sub>2</sub> determines Chip Select Logic(CS') & A<sub>1</sub>,A<sub>0</sub> is for internal selection of address
+                    </div>
+                </div>
+            </div>
+            <div class="column45">
+                <div>
+                    <table id="table1" class="table">
+                        <B>Control Word</B><br>
+                        <tr>
+                            <th>IO/BSR</th>
+                            <th>{Mode of➡</th>
+                            <th>Port-A}</th>
+                            <th>Port-A</th>
+                            <th>Port-C<sub>upper</sub></th>
+                            <th>Mode of Port-B</th>
+                            <th>Port-B</th>
+                            <th>Port-C<sub>lower</sub></th>
+                        </tr>
+                    </table>
+                    <br>
+                    <div>
+                        <!-- <button disabled="true" id="view" onclick="view()"
+                            style="background-color:#0b453a; border:none; padding: 5px; border-radius:5px">Click Here</button> -->
+                        <table id="table1.1" class="table">
+                            <tr>
+                                <th>Read/Write</th>
+                                <th>A<sub>1</sub></th>
+                                <th>A<sub>0</sub></th>
+                                <th>RD'</th>
+                                <th>WR'</th>
+                                <th>CS'</th>
+                            </tr>
+                        </table>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:1360px;">
+            <div class="column50">
+                <!-- <div style="position: relative; top: -0.8em;"><br><b>IO Map Table for Blinking of LED</b></div> -->
+                <!-- <div class="container" style="position: relative; left: 4em">
+                    <div class="box" id="myDiv1" style="width:500px;height:350px;"></div>
+                    
+                </div> -->
+                <div>
+                    <table id="table2" class="table">
+                        <B>IO Map Table for Blinking of LED</B><br><br>
+                        <B>Port A Output Combination</B><br>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>PA5</th>
+                            <th>PA4</th>
+                            <th>PA3</th>
+                            <th>PA2</th>
+                            <th>PA1</th>
+                            <th>PA0</th>
+                            <th>LED</th>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+            <!-- <div class="column50">
+                <div style="position: relative; top: -0.8em;"><b>Field current VS speed plot of DC shunt motor</b></div>
+                <div class="container" style="position: relative; left: 4em">
+                    <div class="box" id="myDiv2" style="width:500px;height:350px;"></div>
+                </div>
+            </div> -->
+        </div>
+
+
+        <div style="position: relative; top: 1em; ">
+            <div><u><B>Instructions</B></u><br>
+                <span>
+                    <!--<B>Step 1: </B>Make the proper connection by clicking the node as instructed below. If the wire
+                    is
+                    misplaced, click the node number to deattach the nodes' wire. <br>
+                    <table>
+                        <tr>
+                            <td><B>From</B></td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>11</td>
+                            <td>5</td>
+                            <td>19</td>
+                            <td>21</td>
+                            <td>2</td>
+                            <td>15</td>
+                            <td>12</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td><B>To</B></td>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>10</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>16</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>17</td>
+                            <td>14</td>
+                            <td>15</td>
+                        </tr>
+                    </table>-->
+                    <B>Step 1: </B>Click "Check" button.
+                    <li>if connection is correct, an alert appers. Click ok. Now, go to step 3.</li>
+                    <li>if connection is wrong, an alert appers. Click ok. Now, go to step 2.</li>
+                    <B>Step 2: </B>Check the connection, if incorrect, click on node <b>number</b> to remove any
+                    particular connection(s) or click on reset button and start from step 1.<br>
+                    <B>Step 3: </B>Switch on the Power Supply(220V➡5V supply for the Crystal)<br>
+                    <B>N.B: </B>CLK<sub>out</sub>:1(LE:1-Address)/0(LE:0-Data)<br>
+                    <B>N.B: </B>IO/M':1(Active High)  ||  CS':0(Active Low)  ||  PPI 8255 is selected to give O/P at Port A(Hex Address:80H)<br>
+                    <B>N.B: </B>Set to work in IO mode 0(for S<sub>1</sub>=0,S<sub>0</sub>=1:IO Write & for S<sub>1</sub>=1,S<sub>0</sub>=0:IO Read)<br>
+                    <B>N.B: </B>Here IO read is performed to fetch the data & IO write is performed to writeback the data and turn on the LEDs<br>
+                    <B>Step 4: </B>Click to view the Assembly Language Code & address of Control Word<br>
+                    <B>Step 5: </B>Record the IO mapping Address Combination for the LED's<br>
+                    <B>Step 6: </B>Follow the procedure<br>
+                    <B>Step 7: </B> Click "Print" button, to print the full connections with graph and table in
+                    landscape mode.
+                    <br>
+                </span>
+                <br><br><br><br>
+            </div>
+            <!-- <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4250097576674323"
+                crossorigin="anonymous"></script> -->
+            <!-- InBetween -->
+            <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4250097576674323"
+                data-ad-slot="5407921571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script> -->
+        </div>
+        <div class="footer noPrint"
+            style="text-align: center; position: relative; top: 2em; background-color:rgb(236, 192, 126);">
+            <div>
+                <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12.5px;">Inspired from
+                    <a href="https://da-iitb.vlabs.ac.in/" target="_blank">da-iitb.vlabs.ac.in</a>
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    </div>
+    <script src="../../static/js/jsplumb1.js"></script>
+    <script src="../../static/js/4/exp3.js"></script>
+</body>
+
+</html>

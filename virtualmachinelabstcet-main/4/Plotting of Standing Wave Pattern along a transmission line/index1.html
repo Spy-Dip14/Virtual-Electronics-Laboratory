@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Plotting of Standing Wave Pattern along a transmission line under different load condition</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description"
+    content="Plotting of Standing Wave Pattern along a transmission line under different load condition">
+
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <link rel="stylesheet" href="../../static/css/4/exp5.css">
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../../static/js/graph.ob.js"></script>
+</head>
+
+<body style="background-color: rgb(236, 228, 180);">
+  <div id="root" style="margin: 0px auto;">
+    <div id="connection-table">
+      <B>Preliminary Step: </B>Make the proper connection by clicking the node as instructed below. If the wire
+      is
+      misplaced, click the node number to deattach the nodes' wire.<br>
+      <table>
+        <tr>
+          <td><B>From</B></td>
+          <td>1</td>
+          <td>3</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td><B>To</B></td>
+          <td>2</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+      </table>
+    </div>
+    <div id="wrapper" style="position:relative; width:1360px; background-color: rgb(255, 255, 255);">
+      <div class="littledot" id="ld1"></br><a href="#" class="cmdLink detach" rel="ld1">1</a>
+      </div>
+      <div class="littledot" id="ld2"></br><a href="#" class="cmdLink detach" rel="ld2">2</a>
+      </div>
+      <div class="littledot" id="ld3"></br><a href="#" class="cmdLink detach" rel="ld3">3</a>
+      </div>
+      <div class="littledot" id="ld4"></br><a href="#" class="cmdLink detach" rel="ld4">4</a>
+      </div>
+      <div class="littledot" id="ld5"></br><a href="#" class="cmdLink detach" rel="ld5">5</a>
+      </div>
+      <div class="littledot" id="ld6"></br><a href="#" class="cmdLink detach" rel="ld6">6</a>
+      </div>
+
+
+      <div class="row">
+        <div class="column">
+
+          <div class="x0" style="position: absolute; left: 1em; ">
+            <div>
+              <button id="check-button"
+                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Check</button>
+            </div>
+            <div>
+              <button id="table2" disabled="true"
+                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Add to
+                Table</button>
+            </div>
+            <div>
+              <button disabled="true" id="graph" onclick="drawgraph()"
+                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Graph
+              </button>
+            </div>
+
+            <div>
+              <button id="print" onclick="window.print();"
+                style="background-color:#27D447; border:none; padding: 5px; border-radius:5px">Print
+              </button>
+            </div>
+
+            <div>
+              <button id="reset" type="reset" onclick="window.location.reload();"
+                style="background-color:#f82d12; border:none; padding: 5px; border-radius:5px">Reset</button>
+            </div>
+          </div>
+
+
+
+          <!--VOLTMETER-->
+          <div class="x5" style="position: absolute;left: 26em; top: 2.5em">
+            <img style="padding-left: 60px" src="../../static/images/cro off.jpg" alt="Wattmeter" width="200"
+              height="150">
+            <div class="meter2" style="position: absolute;top: -1em;left: -16em;">
+              <div class="rang" style="position: absolute;top: -2.5em;left: 20.9em;color: black;">
+                <!-- <div class="rang-title">
+                                    <input class="rang-number2" id="show1" type="text" value="0" disabled="disabled" />
+                                </div> -->
+                <br>CRO
+              </div>
+              <!-- <div>
+                                <svg class="meter" style="position: absolute;top: -10.5em;left: 16.7em;">
+                                    <polygon class="meter-clock" id="meter1" points="129,145 137,90 145,145"></polygon>
+                                    <circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+                                </svg>
+                            </div> -->
+            </div>
+          </div>
+
+
+
+
+          <!--1 PHASE DC MOTOR-->
+          <div class="x6" style="position: absolute;left: 40em; top: 19.65em;">
+            <div style="position: relative; left: 2.1em; top:-2.8em;">
+              <img style="height:200px; width:300px;" src="../../static/images/transmission line analyzer.jpg"
+                id="cirmover1" />
+              <div style="position: absolute;top:0.5em; left: 4em;"><b>Transmission Line Analyzer</b></div>
+            </div>
+          </div>
+          <!--Weight pully-->
+          <div class="x4" style="position: absolute;left: 57.64em; top: 4.5em;">
+
+
+            <div style="position:relative; top: 1em; left: 9em;">
+              <div style="position: relative; top: 27em; left: -25em"><b>Move the slider ➤</b></div>
+
+              <div class="rang" style="position: relative; left: -27em; top: 27em;">
+                <div class="rang-title2">
+                  <input class="rang-number" id="show03" type="text" value="0" />
+                </div>
+              </div>
+              <div class="slidecontainer" style="position:relative; top: 25em; left: -25em;">
+                <input class="rang-slider" disabled="true" id="range" type="range" min="0" max="250" value="0" />
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row" style="width:1360px;">
+      <div class="column50">
+        <div>
+          <table id="table1" class="table">
+            <tr>
+              <th>Serial No.</th>
+              <th>Impedance(kohm)</th>
+              <th>V<sub>max</sub>(V)</th>
+              <th>V<sub>min</sub>(V)</th>
+              <th>P(V<sub>max</sub>/V<sub>min</sub>)</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="column50">
+        <div style="position: relative; top: -0.8em;"><b>Load Impedance Characteristics of Transmission Line</b></div>
+        <div class="container" style="position: relative; left: 2em;">
+          <div class="box" id="myDiv" style="width:560px;height:335px;"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div style="position: relative; top: 1em; ">
+      <div><u><B>Instructions</B></u><br>
+        <span>
+          <!-- <B>Step 1: </B>Make the proper connection by clicking the node as instructed below. If the wire
+                    is
+                    misplaced, click the node number to deattach the nodes' wire. <br>
+                    <table>
+                        <tr>
+                            <td><B>From</B></td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>7</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>11</td>
+                            <td>5</td>
+                            <td>19</td>
+                            <td>21</td>
+                            <td>2</td>
+                            <td>15</td>
+                            <td>12</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td><B>To</B></td>
+                            <td>3</td>
+                            <td>6</td>
+                            <td>10</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>16</td>
+                            <td>18</td>
+                            <td>20</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>17</td>
+                            <td>16</td>
+                            <td>17</td>
+                        </tr>
+                    </table> -->
+          <B>Step 1: </B>Click "Check" button.
+          <li>if connection is correct, an alert appers. Click ok. Now, go to step 3.</li>
+          <li>if connection is wrong, an alert appers. Click ok. Now, go to step 2.</li>
+          <B>Step 2: </B>Check the connection, if incorrect, click on node <b>number</b> to remove any
+          particular connection(s) or click on reset button and start from step 1.<br>
+          <B>Step 3: </B>Move the slider to change the Impedence load value<br>
+          <B>Step 4: </B>Take readings from CRO<br>
+          <B>Step 5: </B>Follow the procedure<br>
+          <B>Step 6: </B> Click "Print" button, to print the full connections with graph and table in
+          landscape mode.
+          <br>
+        </span>
+      </div>
+
+
+
+    </div>
+    <div class="footer noPrint"
+      style="text-align: center; position: relative; top: 2em; background-color:rgb(236, 192, 126);">
+      <div>
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12.5px;">Inspired from
+          <a href="https://de-iitr.vlabs.ac.in/" target="_blank">de-iitr.vlabs.ac.in</a>
+        </p>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  </div>
+  <script src="../../static/js/jsplumb1.js"></script>
+  <script src="../../static/js/4/exp5a.js"></script>
+
+</body>
+
+</html>
